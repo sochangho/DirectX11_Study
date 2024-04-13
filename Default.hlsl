@@ -18,7 +18,9 @@ struct VS_OUTPUT
 //상수 버퍼를 이용하여 값(정점의 위치 크기 회전??)을 변경
 cbuffer TransformData : register(b0)
 {
-    float4 offset;
+    row_major matrix matWorld;
+    row_major matrix matView;
+    row_major matrix matProjection;
 }
 
 
@@ -26,7 +28,12 @@ cbuffer TransformData : register(b0)
 VS_OUTPUT VS(VS_INPUT input)
 {
     VS_OUTPUT output;
-    output.position = input.position + offset;
+    
+    float4 position = mul(input.position, matWorld);
+    position = mul(position, matView);
+    position = mul(position, matProjection);
+    
+    output.position = position;
     output.uv = input.uv;
     
     return output;

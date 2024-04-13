@@ -11,6 +11,8 @@
 #include<unordered_map>
 #include<string>
 
+#include<memory>
+
 using namespace std;
 
 //Win
@@ -44,3 +46,7 @@ using namespace Microsoft::WRL;
 #define CHECK(p) assert(SUCCEEDED(p));
 
 
+
+//Engine
+#include "Graphics.h"
+#include "VertexBuffer.h"

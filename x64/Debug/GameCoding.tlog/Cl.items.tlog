@@ -1,3 +1,8 @@
 C:\Users\thdck\source\repos\GameCoding\GameCoding\Game.cpp;C:\Users\thdck\source\repos\GameCoding\GameCoding\x64\Debug\Game.obj
 C:\Users\thdck\source\repos\GameCoding\GameCoding\GameCoding.cpp;C:\Users\thdck\source\repos\GameCoding\GameCoding\x64\Debug\GameCoding.obj
+C:\Users\thdck\source\repos\GameCoding\GameCoding\Graphics.cpp;C:\Users\thdck\source\repos\GameCoding\GameCoding\x64\Debug\Graphics.obj
+C:\Users\thdck\source\repos\GameCoding\GameCoding\IndexBuffer.cpp;C:\Users\thdck\source\repos\GameCoding\GameCoding\x64\Debug\IndexBuffer.obj
+C:\Users\thdck\source\repos\GameCoding\GameCoding\InputLayout.cpp;C:\Users\thdck\source\repos\GameCoding\GameCoding\x64\Debug\InputLayout.obj
 C:\Users\thdck\source\repos\GameCoding\GameCoding\pch.cpp;C:\Users\thdck\source\repos\GameCoding\GameCoding\x64\Debug\pch.obj
+C:\Users\thdck\source\repos\GameCoding\GameCoding\SimpleMath.cpp;C:\Users\thdck\source\repos\GameCoding\GameCoding\x64\Debug\SimpleMath.obj
+C:\Users\thdck\source\repos\GameCoding\GameCoding\VertexBuffer.cpp;C:\Users\thdck\source\repos\GameCoding\GameCoding\x64\Debug\VertexBuffer.obj
