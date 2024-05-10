@@ -3,15 +3,9 @@
 
 
 
-Game::Game()
-{
+Game::Game(){}
 
-}
-
-Game::~Game()
-{
-
-}
+Game::~Game(){}
 
 void Game::Init(HWND hwnd)
 {
@@ -33,13 +27,8 @@ void Game::Update()
 
 void Game::Render()
 {
-	_graphics->RenderBegin();
-	
-	//TODO : 랜더링 파이프라인
-	//IA - VS - RS - PS - OM
-	{		
-		_gameObject->Render(_pipeline);
-	}
+	_graphics->RenderBegin();			
+	_gameObject->Render(_pipeline);	
 	_graphics->RederEnd();
 }
 

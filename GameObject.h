@@ -36,8 +36,8 @@ private:
 	TransformData _transformData;
 	shared_ptr<ConstantBuffer<TransformData>> _constantBuffer = nullptr;
 
-	Vec3 _localPostion = { 0.f,0.f,0.f };
-	Vec3 _localRotation = { 0.f,0.f,0.f };
-	Vec3 _localScale = { 1.f,1.f,1.f };
+	shared_ptr<Transform> _transform = make_shared<Transform>();
+
+	shared_ptr<Transform> _parent = make_shared<Transform>();
 };
 

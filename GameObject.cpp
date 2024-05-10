@@ -29,7 +29,6 @@ GameObject::GameObject(ComPtr<ID3D11Device> device, ComPtr<ID3D11DeviceContext> 
 	_rasterizerState = make_shared<RasterizerState>(device);
 	_rasterizerState->Create();
 
-
 	_blendState = make_shared<BlendState>(device);
 	_blendState->Create();
 
@@ -42,6 +41,9 @@ GameObject::GameObject(ComPtr<ID3D11Device> device, ComPtr<ID3D11DeviceContext> 
 	_samplerState = make_shared<SamplerState>(device);
 	_samplerState->Create();
 
+	//TEST
+	_parent->AddChild(_transform);
+	_transform->SetParent(_parent);
 }
 
 GameObject::~GameObject()
@@ -50,19 +52,21 @@ GameObject::~GameObject()
 
 void GameObject::Update()
 {
-	//_transformData.offset.x += 0.003f;
-	//_transformData.offset.y += 0.003f;
+	// TEST
+	Vec3 pos = _parent->GetPosition();
+	pos.x += 0.001f;
+	_parent->SetPosition(pos);
 
-	
-	Matrix matScale =  Matrix::CreateScale(_localScale/4);
-	Matrix matRotation = Matrix::CreateRotationX(_localRotation.x);
-	matRotation *= Matrix::CreateRotationY(_localRotation.y);
-	matRotation *= Matrix::CreateRotationZ(_localRotation.z);
-	Matrix matTranslation = Matrix::CreateTranslation(_localPostion);
+	Vec3 rot = _parent->GetRotation();
+	rot.z += 0.001f;
+	_parent->SetRotation(rot);
 
-	Matrix matWorld = matScale * matRotation * matTranslation;
-	_transformData.matWorld = matWorld;
+
+	//Vec3 pos = _transform->GetPosition();
+	//pos.x += 0.001f;
+	//_transform->SetPosition(pos);
 	
+	_transformData.matWorld = _transform->GetWordMatrix();	
 	_constantBuffer->CopyData(_transformData);
 }
 

@@ -1,4 +1,5 @@
 C:\Users\thdck\source\repos\GameCoding\GameCoding\BlendState.cpp;C:\Users\thdck\source\repos\GameCoding\GameCoding\x64\Debug\BlendState.obj
+C:\Users\thdck\source\repos\GameCoding\GameCoding\Component.cpp;C:\Users\thdck\source\repos\GameCoding\GameCoding\x64\Debug\Component.obj
 C:\Users\thdck\source\repos\GameCoding\GameCoding\ConstantBuffer.cpp;C:\Users\thdck\source\repos\GameCoding\GameCoding\x64\Debug\ConstantBuffer.obj
 C:\Users\thdck\source\repos\GameCoding\GameCoding\Game.cpp;C:\Users\thdck\source\repos\GameCoding\GameCoding\x64\Debug\Game.obj
 C:\Users\thdck\source\repos\GameCoding\GameCoding\GameCoding.cpp;C:\Users\thdck\source\repos\GameCoding\GameCoding\x64\Debug\GameCoding.obj
@@ -15,5 +16,6 @@ C:\Users\thdck\source\repos\GameCoding\GameCoding\SamplerState.cpp;C:\Users\thdc
 C:\Users\thdck\source\repos\GameCoding\GameCoding\Shader.cpp;C:\Users\thdck\source\repos\GameCoding\GameCoding\x64\Debug\Shader.obj
 C:\Users\thdck\source\repos\GameCoding\GameCoding\SimpleMath.cpp;C:\Users\thdck\source\repos\GameCoding\GameCoding\x64\Debug\SimpleMath.obj
 C:\Users\thdck\source\repos\GameCoding\GameCoding\Texture.cpp;C:\Users\thdck\source\repos\GameCoding\GameCoding\x64\Debug\Texture.obj
+C:\Users\thdck\source\repos\GameCoding\GameCoding\Transform.cpp;C:\Users\thdck\source\repos\GameCoding\GameCoding\x64\Debug\Transform.obj
 C:\Users\thdck\source\repos\GameCoding\GameCoding\VertexBuffer.cpp;C:\Users\thdck\source\repos\GameCoding\GameCoding\x64\Debug\VertexBuffer.obj
 C:\Users\thdck\source\repos\GameCoding\GameCoding\VertexData.cpp;C:\Users\thdck\source\repos\GameCoding\GameCoding\x64\Debug\VertexData.obj
