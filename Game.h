@@ -20,7 +20,8 @@ private:
 	shared_ptr<Graphics> _graphics = nullptr;
 	shared_ptr<Pipeline> _pipeline = nullptr;
 
-	shared_ptr<GameObject> _gameObject;
+	shared_ptr<GameObject> _monster;
+	shared_ptr<GameObject> _camera;
 private :
 	
 
