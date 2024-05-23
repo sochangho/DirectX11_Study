@@ -21,7 +21,7 @@ void Graphics::RenderBegin()
 	_deviceContext->RSSetViewports(1, &_viewport);
 }
 
-void Graphics::RederEnd()
+void Graphics::RenderEnd()
 {
 	// 후면버퍼에서 -> 전면 버퍼로 복사
 	HRESULT hr = _swapChain->Present(1, 0);

@@ -16,11 +16,24 @@ struct VS_OUTPUT
 
 
 //상수 버퍼를 이용하여 값(정점의 위치 크기 회전??)을 변경
-cbuffer TransformData : register(b0)
+cbuffer CameraData : register(b0)
 {
-    row_major matrix matWorld;
+
     row_major matrix matView;
     row_major matrix matProjection;
+}
+
+cbuffer TransformData : register(b1)
+{
+    row_major matrix matWorld;   
+}
+
+cbuffer AnimationData : register(b2)
+{
+    float2 spriteOffset;
+    float2 spriteSize;
+    float2 textureSize;
+    float useAnimation; 
 }
 
 
@@ -35,6 +48,13 @@ VS_OUTPUT VS(VS_INPUT input)
     
     output.position = position;
     output.uv = input.uv;
+    
+    if (useAnimation == 1.0f)
+    {
+        output.uv *= spriteSize / textureSize;
+        output.uv += spriteOffset / textureSize;        
+    }
+    
     
     return output;
 }

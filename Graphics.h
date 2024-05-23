@@ -8,7 +8,7 @@ public:
 
 
 	void RenderBegin();
-	void RederEnd();
+	void RenderEnd();
 
 	ComPtr<ID3D11Device> GetDevice() { return _device; }
 	ComPtr<ID3D11DeviceContext> GetDeviceContext() { return _deviceContext; }

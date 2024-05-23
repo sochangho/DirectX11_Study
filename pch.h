@@ -21,6 +21,9 @@ using namespace std;
 #include<windows.h>
 #include<assert.h>
 
+//Util
+#include "tinyxml2.h"
+using namespace tinyxml2;
 
 //DX
 #include<d3d.h>
@@ -47,6 +50,12 @@ using namespace Microsoft::WRL;
 #define CHECK(p) assert(SUCCEEDED(p));
 
 
+#define  GAME    GGame
+#define  SCENE    GAME->GetSceneManager()
+#define  INPUT    GAME->GetInputManager()
+#define  TIME     GAME->GetTimeManager()
+#define  RESOURCE GAME->GetResourceManager() 
+#define  RENDER   GAME->GetRenderManager()
 
 //Engine
 #include "Graphics.h"
@@ -56,7 +65,7 @@ using namespace Microsoft::WRL;
 #include "Geometry.h"
 #include "VertexData.h"
 #include "GeometryHelper.h"
-#include "Shader.h"
+#include "ShaderBase.h"
 #include "ConstantBuffer.h"
 #include "Texture.h"
 #include "RasterizerState.h"

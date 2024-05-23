@@ -15,6 +15,7 @@ enum class ComponentType : uint8
 	End,
 };
 
+
 enum
 {
 	FIXED_COMPONENT_COUNT = static_cast<uint8>(ComponentType::End) - 1,
