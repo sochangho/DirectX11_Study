@@ -1,6 +1,16 @@
 #include "pch.h"
 #include "Game.h"
 
+//Device : 파이프라인이 사용할 자원들을 생성할 때
+//Device Context : 파이프라인 자체를 조작할 때에는 장치 문맥 인터페이스 사용
+
+//SwapChain
+//버퍼를 하나만 사용할 경우 그리고 지우는 과장에서 깜빡거리는 현상이 일어날 수 있다.
+//해결 방법은 후면버퍼 전면버퍼 2개를 이용해서 
+//후면 버퍼는 그려지면 , 전면과 후면과 교체를한다.
+//전면은 후면, 후면은 전면이 된다.
+
+
 Game::Game()
 {
 
@@ -19,19 +29,19 @@ void Game::Init(HWND hwnd)
 
 	CreateDeviceAndSwapChain();
 	CreateRenderTargetView();
-	SetViewport();
-	
-	CreateGeometry();
-	CreateVS();
-	CreateInputLayout();
-	CreatePS();
-	CreateSRV();
+	SetViewport(); // 화면 옵션설정
+	 
+	CreateGeometry(); // 기하학 도형 :  정점 버퍼 인데스 버퍼 만든다
+	CreateVS();      // 버텍스 쉐이더 생성 
+	CreateInputLayout(); // Transform 데이터를 쉐이더로 넘기기 위한 설정
+	CreatePS(); // 픽셀쉐이더 생성
+	CreateSRV(); // 텍스쳐로드 
 
-	CreateConstantBuffer();
+	CreateConstantBuffer(); //ConstantBuffer 생성
 
-	CreateRasterizerState();
-	CreateSamplerState();
-    CreateBlendState();
+	CreateRasterizerState(); // Resterizer 옵션 설정 및 생성
+	CreateSamplerState(); //Sampler State
+    CreateBlendState(); // Blend State
 }
 
 void Game::Update()
@@ -244,9 +254,23 @@ void Game::CreateGeometry()
 void Game::CreateInputLayout()
 {
 
+	//정점 구조체를 정의했다면, 그 구조체의 각 성분이 어떤 용도인지 Direct3D에게 알려줘야 한다.
+	//D3D11_INPUT_ELEMENT_DESC 구조체로 이루어진 배열을 통해 구축한다.
+	
+	//정점의 성분이 2개라면 D3D11_INPUT_ELEMENT_DESC 배열의 원소도 2개여야한다.
+    
+
 	D3D11_INPUT_ELEMENT_DESC layout[] = {
 
-		{"POSITION",0,DXGI_FORMAT_R32G32B32_FLOAT,0,0,D3D11_INPUT_PER_VERTEX_DATA,0},
+		{
+			"POSITION",   //SemanticName : 문자열 이름, 정점셰이더에서 쓰이는 유효한 변수이름
+ 			0,            //SemanticIndex : 인덱스, 텍스쳐 좌표의 인덱스를 구분하는데 쓰인다.
+			DXGI_FORMAT_R32G32B32_FLOAT, //정점 성분의 자료 형식을 구분하는데 쓰인다.
+			0,            //InputSlot : 이 성분의 자료가 공급될 정점 버퍼 슬롯의 색인이다.
+			0,            //AlignedByteOffset : 정점의 위치 offset
+			D3D11_INPUT_PER_VERTEX_DATA,//인스턴싱에 쓰이는 부분 
+			0  //인스턴싱에 쓰이는 부분
+		},
 		{"TEXCOORD",0,DXGI_FORMAT_R32G32_FLOAT,0,12,D3D11_INPUT_PER_VERTEX_DATA,0},
 	};
 
@@ -293,6 +317,13 @@ void Game::CreateRasterizerState()
 
 void Game::CreateSamplerState()
 {
+
+	// 텍스쳐 좌표가 텍셀에 매칭되지 않을 때, 색상을 어떻게 결정할지 정의합니다.
+	//Wrap : 텍스쳐 좌표가 [0,1] 범위를 벗어났을 때, 좌표값을 '감싸서' 반복 적용합니다.
+	//Mirror : 좌표가 범위를 벗어날 때 마다 이미지가 거울처럼 반전
+	//Clamp : 좌표가 [0,1] 범위를 벗어나면, 가장자리의 색상을 계속 사용합니다.
+	//Border : 지정된 색상으로 경계를 채웁니다.
+
 	D3D11_SAMPLER_DESC desc;
 	ZeroMemory(&desc, sizeof(desc));
 	desc.AddressU = D3D11_TEXTURE_ADDRESS_BORDER;
@@ -319,6 +350,10 @@ void Game::CreateSamplerState()
 
 void Game::CreateBlendState()
 {
+	//BlendState 렌더링 파이프라인에서 픽셀 셰이더를 거쳐 생성된 
+	//단편이 렌더 타겟에 어떻게 적용될지 결정하는 상태
+	//이미지위에 이미지를 덧그릴 때 결과가 어떻게 나올지를 결정하는 값
+
 	D3D11_BLEND_DESC desc;
 	ZeroMemory(&desc, sizeof(desc));
 	desc.AlphaToCoverageEnable = false;
